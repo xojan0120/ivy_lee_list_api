@@ -1,6 +1,4 @@
 class ArchivedItem < ApplicationRecord
-  validates :title, presence: true
-
   def self.add_item(title)
     update_all("order_number = order_number + 1")
     create(title: title, order_number: 0)

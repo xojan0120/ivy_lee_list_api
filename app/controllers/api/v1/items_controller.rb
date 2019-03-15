@@ -19,7 +19,12 @@ module Api
 
       def update_order
         Item.move_item(params['item_id'], params['from'], params['to'])
-        render json: { status: 200, message: ' moved item', data: {} }
+        render json: { status: 200, message: 'moved item', data: {} }
+      end
+
+      def update_title
+        Item.find(params['item_id']).update_attribute(:title, params['title'])
+        render json: { status: 200, message: 'changed item', data: {} }
       end
     end
   end
