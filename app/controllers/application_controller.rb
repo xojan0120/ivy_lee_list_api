@@ -8,15 +8,24 @@ class ApplicationController < ActionController::API
   rescue_from ActionController::RoutingError, with: :render_404
 
   def render_404(e)
-    render_response(e, 404, 'Not found error')
+    status, message  = 404, 'Not found error'
+    logger_error(e, status, message)
+    render_response(status, message)
+  end
+
+  def render_200(message, data = {})
+    render_response(status, message, data)
   end
 
   private
 
-    def render_response(e, status, message)
+    def logger_error(e, status, message)
       logger.error "render_#{status}: #{message}"
       logger.error e.backtrace.join("\n")
-      render status: status, json: { status: status, message: message }
+    end
+
+    def render_response(status, message, data)
+      render status: status, json: { status: status, message: message, data: data }
     end
 
 end

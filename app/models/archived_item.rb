@@ -1,13 +1,8 @@
 class ArchivedItem < ApplicationRecord
-  def self.add_item(title)
-    update_all("order_number = order_number + 1")
-    create(title: title, order_number: 0)
-  end
+  extend BasicItem
 
-  def self.delete_item(itemId)
-    deleted_item = find(itemId).destroy
-    where("order_number > ?", deleted_item.order_number)
-      .update_all("order_number = order_number - 1")
-    deleted_item
+  def self.restore_item(item_id)
+    deleted_item = ArchivedItem.delete_item(item_id)
+    Item.add_item(deleted_item.title)
   end
 end
