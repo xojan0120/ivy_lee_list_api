@@ -16,15 +16,15 @@ module BasicItem
     deleted_item
   end
 
-  # レコード順序入れ替え(参考：https://teratail.com/questions/117201)
+  # レコード順序入れ替えロジック参考：https://teratail.com/questions/117201
   def move_item(item_id, from , to)
     find(item_id).update_attribute(:order_number, to)
     if from > to
-      where("order_number >= :to AND order_number < :from",{ from: from, to: to })
+      where("order_number >= :to AND order_number < :from", { from: from, to: to })
         .where.not(id: item_id) 
         .update_all("order_number = order_number + 1")
     else
-      where("order_number > :from AND order_number <= :to",{ from: from, to: to })
+      where("order_number > :from AND order_number <= :to", { from: from, to: to })
         .where.not(id: item_id) 
         .update_all("order_number = order_number - 1")
     end
