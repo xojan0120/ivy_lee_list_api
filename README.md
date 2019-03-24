@@ -1,24 +1,30 @@
-# README
+Ivy Lee List
+===
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
+これは、簡素なスマホ向けToDoアプリです。勉強用に作成しました。  
 
-Things you may want to cover:
+## Description
+フロントエンドにReact、バックエンドにRails(API)を使用しています。  
+React部分には、[Framework7](https://framework7.io/react/)を使用しています。  
+フロントエンド部分は[こちら](https://github.com/xojan0120/ivy_lee_list)  
 
-* Ruby version
+認証機能はありません。
 
-* System dependencies
+## Install
 
-* Configuration
+```
+git clone https://github.com/xojan0120/ivy_lee_list_api
+cd ivy_lee_list_api
+bin/bundle install
+bin/rails server
+```
 
-* Database creation
+## アプリの使い方
+[こちら](https://github.com/xojan0120/ivy_lee_list)  
 
-* Database initialization
+## Licence
+[MIT](https://opensource.org/licenses/MIT)
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Author
+[Kido Ryosuke](https://github.com/xojan0120)
