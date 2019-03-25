@@ -22,6 +22,7 @@ git clone https://github.com/xojan0120/ivy_lee_list_api
 cd ivy_lee_list_api
 bin/bundle install
 bin/rails db:create
+bin/rails db:migrate
 bin/rails db:seed
 bin/rails server
 ```
